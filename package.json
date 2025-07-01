@@ -1,0 +1,23 @@
+{
+  "name": "trainingeggs1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vzoicas2025/TrainingEggs1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/vzoicas2025/TrainingEggs1/issues"
+  },
+  "homepage": "https://github.com/vzoicas2025/TrainingEggs1#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.53.2",
+    "@types/node": "^24.0.8"
+  }
+}
