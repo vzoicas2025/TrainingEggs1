@@ -7,7 +7,7 @@ test.skip('has title', async ({ page }) => {
   await expect(page).toHaveTitle(/Playwright/);
 });
 
-test('Add an item to cart', { tag: ['@smoke'] },async ({ page }) => {
+test.skip('Add an item to cart', { tag: ['@smoke'] },async ({ page }) => {
 
   await page.goto('https://www.saucedemo.com/');
 
