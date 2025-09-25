@@ -20,14 +20,14 @@ test.beforeEach(async ({ browser }) => {
     await page.waitForTimeout(1000);
 });
 
-test.skip('Add to cart', { tag: ['@withHooks'] },async ({  }) => {
+test('Add to cart', { tag: ['@withHooks','@withHooks1'] },async ({  }) => {
     await page.locator('xpath = /html/body/div/div/div/div[2]/div/div/div/div[2]/div[2]/div[2]/button').click();
     await expect(page.locator('.shopping_cart_badge')).toBeVisible();
     await page.waitForTimeout(1000);
 
 });
 
-test.skip('Add to cart and remove', { tag: ['@withHooks'] },async ({  }) => {
+test('Add to cart and remove', { tag: ['@withHooks','@withHooks2'] },async ({  }) => {
     await page.locator('xpath = /html/body/div/div/div/div[2]/div/div/div/div[2]/div[2]/div[2]/button').click();
     await expect(page.locator('.btn.btn_secondary.btn_small.btn_inventory')).toBeVisible();
     await page.waitForTimeout(1000);
@@ -37,7 +37,7 @@ test.skip('Add to cart and remove', { tag: ['@withHooks'] },async ({  }) => {
     await page.waitForTimeout(1000);
 });
 
-test('Add all items to cart ', { tag: ['@withHooks'] },async ({  }) => {
+test('Add all items to cart ', { tag: ['@withHooks','@withHooks3'] },async ({  }) => {
     var countItems:number = await page.locator('.inventory_item_name ').count();
     for (let i=0;i<countItems; i++){
         await page.locator('.btn').nth(i).click();

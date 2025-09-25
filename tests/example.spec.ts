@@ -2,12 +2,10 @@ import { test, expect } from '@playwright/test';
 
 test.skip('has title', async ({ page }) => {
   await page.goto('https://playwright.dev/');
-
-  // Expect a title "to contain" a substring.
   await expect(page).toHaveTitle(/Playwright/);
 });
 
-test.skip('Add an item to cart', { tag: ['@smoke'] },async ({ page }) => {
+test('Add an item to cart', { tag: ['@smoke', '@regression'] },async ({ page }) => {
 
   await page.goto('https://www.saucedemo.com/');
 
@@ -24,6 +22,6 @@ test.skip('Add an item to cart', { tag: ['@smoke'] },async ({ page }) => {
   await page.waitForTimeout(1000);
 
   await page.locator('xpath = /html/body/div/div/div/div[2]/div/div/div/div[2]/div[2]/div[2]/button').click();
-  // Expect a title "to contain" a substring.
+
   await expect(page.locator('.shopping_cart_badge')).toBeVisible();
 });
