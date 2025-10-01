@@ -38,7 +38,7 @@ test('Add to cart and remove', { tag: ['@withHooks','@withHooks2'] },async ({  }
 });
 
 test('Add all items to cart ', { tag: ['@withHooks','@withHooks3'] },async ({  }) => {
-    var countItems:number = await page.locator('.inventory_item_name ').count();
+    var countItems:number = await page.locator('.inventory_item_name').count();
     for (let i=0;i<countItems; i++){
         await page.locator('.btn').nth(i).click();
         await page.waitForTimeout(2000);

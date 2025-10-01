@@ -1,6 +1,6 @@
 import {test} from "@playwright/test";
 
-test.skip('Introduce data into form', { tag: ['@smoke'] },async ({ page }) => {
+test('Introduce data into form', { tag: ['@smoke1'] },async ({ page }) => {
 
     await page.goto('https://demoqa.com/automation-practice-form');
 
