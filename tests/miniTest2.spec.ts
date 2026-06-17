@@ -1,25 +1,31 @@
-import {test} from "@playwright/test";
+import {expect, test} from "@playwright/test";
 
-test('mini',{ tag: ['@mini'] }, async ({ page }) => {
+let page;
+
+test.beforeEach(async ({ browser }) => {
+    page = await browser.newPage();
+
     await page.goto('https://www.mini.de/de_DE/home.html');
-
-    await page.locator('xpath = /html/body/header/nav/div[2]/div/div/ul/li[1]/div/button/span[1]').click();
-
-    let quickEntryButtonText = page.locator(".md-home-quick-entry .btn-title") //list of cars quick entry text
-    const count = await quickEntryButtonText.count()
-
-    for(let i=0;i < count; i++){
-        const quickEntryElement = quickEntryButtonText.nth(i);
-        await quickEntryElement.scrollIntoViewIfNeeded();
-        await page.waitForTimeout(300);
-        const currentText = await quickEntryElement.innerText();
-
-        if(currentText.includes('MINI Neuwagen und Junge Gebrauchte')){
-            await quickEntryElement.click();
-            return;
-        }
-    }
 
     await page.waitForTimeout(1000);
 
+    await page.evaluate('document.querySelector("body > epaas-consent-drawer-shell").shadowRoot.querySelector("body > div > div > section > div.actions > div > div.buttons > button.accept-button.button-primary > span").click()');
+
+    await expect(page.locator('.consentDrawer.fadein.small')).not.toBeTruthy;
+
+    await page.waitForTimeout(1000);
+
+});
+
+test('Open Mini Cooper Cabrio page', { tag: ['@withHooks123','@withHooks13'] }, async ({  }) => {
+    await page.locator('xpath = /html/body/main/div/div/div[2]/div/div[5]/section/div[2]').scrollIntoViewIfNeeded();
+    await page.waitForTimeout(1000);
+    while (!await page.locator('xpath = /html/body/main/div/div/div[2]/div/div[5]/section/div[2]/div/div/div/div[6]/a/div/div[1]/p').isVisible().catch(() => false)) {
+        await page.locator('xpath = /html/body/main/div/div/div[2]/div/div[5]/section/div[2]/div/button[2]').click();
+        await page.waitForTimeout(500);
+    }
+    await page.locator('xpath = /html/body/main/div/div/div[2]/div/div[5]/section/div[2]/div/div/div/div[6]/a/div/div[1]/p').scrollIntoViewIfNeeded();
+    await page.locator('xpath = /html/body/main/div/div/div[2]/div/div[5]/section/div[2]/div/div/div/div[6]/a/div/div[1]/p').click();
+    await page.waitForTimeout(5000);
+    await expect(page.locator('body > div.header > header > div.md-fsm-navigation__stream.md-fsm-navigation__stream--active.md-stream-navigation-bottom')).toBeVisible();
 });

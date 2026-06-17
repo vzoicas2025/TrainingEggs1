@@ -47,8 +47,10 @@ test('mini1',{ tag: ['@mini1'] }, async ({ page }) => {
 test('mini2',{ tag: ['@mini2'] }, async ({ page }) => {
     await page.goto('https://www.mini.de/de_DE/home.html');
     await page.waitForTimeout(1000);
-    await clickLevel1HeaderItems(page, 'Angebote')
+    await clickLevel1HeaderItems(page, 'MINI Electric')
+    await page.waitForTimeout(1000);
     await clickLevel3HeaderItems(page, 'MINI Neuwagen')
+    await page.waitForTimeout(1000);
     await checkUserArrivesOnPageURL(page, 'fahrzeugsuche')
 });
 

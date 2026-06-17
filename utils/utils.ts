@@ -11,4 +11,5 @@ export const checkUserArrivesOnPageURL = async (page: Page, containtext: string)
     await page.waitForTimeout(1000);
     const url = page.url()
     expect(url).toContain(containtext);
+
 }

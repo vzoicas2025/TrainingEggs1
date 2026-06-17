@@ -1,11 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.skip('has title', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
-  await expect(page).toHaveTitle(/Playwright/);
-});
-
-test('Add an item to cart', { tag: ['@smoke', '@regression'] },async ({ page }) => {
+test('Add an item to cart', { tag: ['@smoke12', '@regression'] },async ({ page }) => {
 
   await page.goto('https://www.saucedemo.com/');
 
@@ -23,5 +18,6 @@ test('Add an item to cart', { tag: ['@smoke', '@regression'] },async ({ page }) 
 
   await page.locator('xpath = /html/body/div/div/div/div[2]/div/div/div/div[2]/div[2]/div[2]/button').click();
 
-  await expect(page.locator('.shopping_cart_badge')).toBeVisible();
+  await expect(page.locator('.shopping_cart_badge')).toBeVisible(); let i = 0
+
 });
