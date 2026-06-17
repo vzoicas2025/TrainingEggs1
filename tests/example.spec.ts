@@ -18,6 +18,6 @@ test('Add an item to cart', { tag: ['@smoke12', '@regression'] },async ({ page }
 
   await page.locator('xpath = /html/body/div/div/div/div[2]/div/div/div/div[2]/div[2]/div[2]/button').click();
 
-  await expect(page.locator('.shopping_cart_badge')).toBeVisible(); let i = 0
+  await expect(page.locator('.shopping_cart_badge')).toBeVisible();
 
 });
